@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { ContactService } from './services/statics/contact/contact.service';
     HttpModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [AuthService, PostService, ContactService],
   bootstrap: [AppComponent]
