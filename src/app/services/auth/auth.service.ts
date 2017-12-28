@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http: Http, private router: Router) { }
 
-  saveToken(token: string) {
+  public saveToken(token: string) {
     localStorage['blog-token'] = token;
   };
 

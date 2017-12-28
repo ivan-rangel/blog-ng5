@@ -22,12 +22,19 @@
         <div class="form-group">
           <label for="name">Confirm Password</label>
           <input type="password" minlength="6" class="form-control" [(ngModel)]="user.passwordConf" name="passwordconf" required>
-        </div>
+        </div>        
         
         <div class="form-group">
           <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Save</button>
         </div>        
       </form>
+      <div>
+        <a href="http://local.blog.com:8080/api/v1/users/facebookLogin" target="_blank">
+          <span>
+            <fa name='facebook-official' size='4x'></fa>
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </div>

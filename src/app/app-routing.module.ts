@@ -20,6 +20,10 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'fb-login/:token',
+        component: LoginComponent,        
+    },
+    {
         path: 'signup',
         component: SignupComponent,
         pathMatch: 'full'
