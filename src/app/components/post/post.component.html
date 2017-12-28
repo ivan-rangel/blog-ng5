@@ -1,22 +1,20 @@
-<div class="row margin-bottom-15">
-  <a routerLink="post-create" *ngIf="currentUser.accountConfirmed">
-    <button class="btn btn-primary">
-      Add new Post
-    </button>
-  </a>
-</div>
-<div class="row">
-  <div *ngFor="let post of posts; let i = index">
-    <div class="clearfix" *ngIf="index % 3 == 0"></div>
-    <div class="col-md-4 well back-color" >
-      <h2>{{post.title}}</h2>
-      <h3>{{post.body}}</h3>
-      <h4>{{post.createdAt | date: 'medium'}} by {{post.author.firstName}} {{post.author.lastName}}</h4>
+<div class="container">
+    <div class="row margin-bottom-15">
+        <a routerLink="post-create" *ngIf="currentUser.accountConfirmed">
+            <button class="btn btn-primary">
+                Add new Post
+            </button>
+        </a>
     </div>
-  </div>
+    <div class="row">
+        <div class="">
+            <h2>
+                {{post.title}}
+            </h2>
+            <h3>{{post.body}}</h3>
+            <h4>{{post.createdAt | date: 'medium'}}
+                <span *ngIf="post.author"> by {{post.author.firstName}} {{post.author.lastName}}</span>
+            </h4>
+        </div>
+    </div>
 </div>
-<!-- <ul>
-  <li *ngFor="let post of posts">
-    {{post.title}}
-  </li>
-</ul> -->

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post/post.service';
-import { post } from 'selenium-webdriver/http';
 import { AuthService } from '../../services/auth/auth.service';
+import { ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: 'app-post',
@@ -9,20 +10,22 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  posts = null;
-  currentUser = null;
-
-  constructor(private postS: PostService, private authS: AuthService) { }
+  currentUser = {}
+  post = {}
+  constructor(private postS: PostService, private authS: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.currentUser = this.authS.currentUser();
-    this.postS.getPosts()
-      .then(posts => {
-        this.posts = posts;
-      })
-      .catch(err => {
-        console.log(err);
-       })
+    this.route.params.subscribe(params => {
+      let postId = params.postId;
+      this.postS.getPost(postId)
+        .then(res => {
+          this.post = res;
+        })
+        .catch(res => {
+          console.log(res);
+        })
+    });
   }
 
 }
