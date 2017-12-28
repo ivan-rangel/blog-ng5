@@ -20,6 +20,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { AuthService } from './services/auth/auth.service';
 import { PostService } from './services/post/post.service';
+import { ContactService } from './services/statics/contact/contact.service';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { PostService } from './services/post/post.service';
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
   ],
-  providers: [AuthService, PostService],
+  providers: [AuthService, PostService, ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
