@@ -7,9 +7,27 @@
         </a>
     </div>
     <div class="row">
-        <div *ngFor="let post of posts; let i = index">
+        <h2>Featured Posts</h2>
+        <div *ngFor="let post of posts; let i = index" >
             <div class="clearfix" *ngIf="index % 3 == 0"></div>
-            <div class="col-md-4 well back-color">
+            <div class="col-md-4 well back-color" *ngIf="post.isFeatured && post.isVisible">
+                <h2>
+                    <a [routerLink]="['/post', post._id ]">
+                        {{post.title}} <span> <fa name='star'></fa> </span>
+                    </a>
+                </h2>
+                <h3>{{post.body}}</h3>
+                <h4>{{post.createdAt | date: 'medium'}}
+                    <span *ngIf="post.author"> by {{post.author.firstName}} {{post.author.lastName}}</span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="row col-md-12">
+        <h2>All Posts</h2>
+        <div *ngFor="let post of posts; let i = index" >
+            <div class="clearfix" *ngIf="index % 3 == 0"></div>
+            <div class="col-md-4 well back-color" *ngIf="!post.isFeatured && post.isVisible">
                 <h2>
                     <a [routerLink]="['/post', post._id ]">
                         {{post.title}}

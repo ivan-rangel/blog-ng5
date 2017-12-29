@@ -25,7 +25,10 @@
     <ul class="nav navbar-nav navbar-right" *ngIf="isLoggedIn">
       
       <li>
-        <a routerLink="profile">
+        <a routerLink="profile" *ngIf="currentUser.userType=='user'">
+          Welcome {{currentUser.firstName}} {{currentUser.lastName}}
+        </a> 
+        <a routerLink="admin" *ngIf="currentUser.userType=='admin'">
           Welcome {{currentUser.firstName}} {{currentUser.lastName}}
         </a> 
       </li>

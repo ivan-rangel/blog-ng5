@@ -50,4 +50,30 @@ export class PostService {
     })
     return promise;
   }
+
+  public feature(postId) {
+    let promise = new Promise((resolve, reject) => {
+      this.http.patch(`${this.apiURL}/featured`, { postId: postId }).toPromise()
+        .then(res => {
+          resolve(res);
+        })
+        .catch(res => {
+          reject(res)
+        })
+    })
+    return promise;
+  }
+
+  public shown(postId) {
+    let promise = new Promise((resolve, reject) => {
+      this.http.patch(`${this.apiURL}/shown`, { postId: postId }).toPromise()
+        .then(res => {
+          resolve(res);
+        })
+        .catch(res => {
+          reject(res)
+        })
+    })
+    return promise;
+  }
 }

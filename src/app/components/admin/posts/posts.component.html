@@ -1,0 +1,27 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <th>Title</th>
+    <th>Body</th>
+    <th>Created at</th>
+    <th>Options</th>
+    <tr *ngFor="let post of posts">
+      <td>{{post.title}}</td>
+      <td>{{post.body}}</td>
+      <td>{{post.createdAt}}</td>
+      <td>
+        <span (click)="featurePost(post._id)" *ngIf="!post.isFeatured" tooltip="Feature">
+          <fa name='star-o' size='lg'></fa>
+        </span>
+        <span (click)="featurePost(post._id)" *ngIf="post.isFeatured" tooltip="Unfeature">
+          <fa name='star' size='lg'></fa>
+        </span>
+        <span (click)="shownPost(post._id)" *ngIf="!post.isVisible" tooltip="Show">
+          <fa name='eye' size='lg'></fa>
+        </span>
+        <span (click)="shownPost(post._id)" *ngIf="post.isVisible" tooltip="Hide">
+          <fa name='eye-slash' size='lg'></fa>
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>
