@@ -6,7 +6,7 @@
             </button>
         </a>
     </div>
-    <div class="row">
+    <div class="row col-md-12">
         <h2>Featured Posts</h2>
         <div *ngFor="let post of posts; let i = index" >
             <div class="clearfix" *ngIf="index % 3 == 0"></div>
@@ -16,7 +16,7 @@
                         {{post.title}} <span> <fa name='star'></fa> </span>
                     </a>
                 </h2>
-                <h3>{{post.body}}</h3>
+                <h3 [tooltip]='post.body'>{{post.body | sliceString}}</h3>
                 <h4>{{post.createdAt | date: 'medium'}}
                     <span *ngIf="post.author"> by {{post.author.firstName}} {{post.author.lastName}}</span>
                 </h4>
@@ -33,7 +33,7 @@
                         {{post.title}}
                     </a>
                 </h2>
-                <h3>{{post.body}}</h3>
+                <h3 [tooltip]='post.body' tooltipAnimation='true'>{{post.body | sliceString}} </h3>
                 <h4>{{post.createdAt | date: 'medium'}}
                     <span *ngIf="post.author"> by {{post.author.firstName}} {{post.author.lastName}}</span>
                 </h4>

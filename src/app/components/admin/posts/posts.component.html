@@ -1,13 +1,13 @@
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover margin-top-30">
     <th>Title</th>
     <th>Body</th>
     <th>Created at</th>
     <th>Options</th>
     <tr *ngFor="let post of posts">
       <td>{{post.title}}</td>
-      <td>{{post.body}}</td>
-      <td>{{post.createdAt}}</td>
+      <td [tooltip]='post.body'>{{post.body | sliceString}}</td>
+      <td>{{post.createdAt | date:'medium'}}</td>
       <td>
         <span (click)="featurePost(post._id)" *ngIf="!post.isFeatured" tooltip="Feature">
           <fa name='star-o' size='lg'></fa>
@@ -20,6 +20,9 @@
         </span>
         <span (click)="shownPost(post._id)" *ngIf="post.isVisible" tooltip="Hide">
           <fa name='eye-slash' size='lg'></fa>
+        </span>
+        <span (click)="deletePost(post._id)">
+          <fa name='trash' size='lg'></fa>
         </span>
       </td>
     </tr>

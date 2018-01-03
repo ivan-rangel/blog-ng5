@@ -21,7 +21,6 @@ export class PostsComponent implements OnInit {
   }
 
   private featurePost(postId) {
-    console.log(postId);
     this.postS.feature(postId)
       .then(res => {
         alert('Post updated')
@@ -32,10 +31,20 @@ export class PostsComponent implements OnInit {
       })
   }
   private shownPost(postId) {
-    console.log(postId);
     this.postS.shown(postId)
       .then(res => {
         alert('Post updated')
+        this.ngOnInit();
+      })
+      .catch(res => {
+        console.log(res);
+      })
+  }
+
+  private deletePost(postId) {
+    this.postS.delete(postId)
+      .then(res => {
+        alert('Post deleted')
         this.ngOnInit();
       })
       .catch(res => {

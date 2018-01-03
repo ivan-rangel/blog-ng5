@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PostService {
   apiURL = 'http://local.blog.com:8080/api/v1/posts';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   public getPosts() {
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.apiURL).toPromise()
         .then(res => {
-          let data = res.json();
-          resolve(data);
+          resolve(res);
         })
         .catch(res => {
-          let data = res.json();
-          reject(data)
+          reject(res)
         })
     })
     return promise;
@@ -27,12 +25,22 @@ export class PostService {
     let promise = new Promise((resolve, reject) => {
       this.http.get(`${this.apiURL}/${postId}`).toPromise()
         .then(res => {
-          let data = res.json();
-          resolve(data);
+          resolve(res);
         })
         .catch(res => {
-          let data = res.json();
-          reject(data)
+          reject(res)
+        })
+    })
+    return promise;
+  }
+  public getPostByUser(userId) {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(`${this.apiURL}/userId/${userId}`).toPromise()
+        .then(res => {
+          resolve(res);
+        })
+        .catch(res => {
+          reject(res)
         })
     })
     return promise;
@@ -67,6 +75,19 @@ export class PostService {
   public shown(postId) {
     let promise = new Promise((resolve, reject) => {
       this.http.patch(`${this.apiURL}/shown`, { postId: postId }).toPromise()
+        .then(res => {
+          resolve(res);
+        })
+        .catch(res => {
+          reject(res)
+        })
+    })
+    return promise;
+  }
+
+  public delete(postId) {
+    let promise = new Promise((resolve, reject) => {
+      this.http.delete(`${this.apiURL}/${postId}`).toPromise()
         .then(res => {
           resolve(res);
         })

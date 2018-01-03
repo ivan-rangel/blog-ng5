@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthService {
 
   private API_URL: string = 'http://local.blog.com:8080/api/v1';
-  private headers: Headers = new Headers({ 'Content-Type': 'application/json' });
 
-  constructor(private http: Http, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   public saveToken(token: string) {
     localStorage['blog-token'] = token;
@@ -18,16 +17,15 @@ export class AuthService {
   public login(user) {
     let url: string = `${this.API_URL}/users/login`;
     let promise = new Promise((resolve, reject) => {
-      this.http.post(url, user, { headers: this.headers }).toPromise()
-        .then((res) => {
-          let data = res.json();
-          let token = data.token;
+      this.http.post(url, user).toPromise()
+        .then(res => {
+          let token = res["token"];
           this.saveToken(token)
           this.router.navigate(['']);
           resolve();
         })
         .catch(res => {
-          let err = res.json();
+          let err = res
           alert(err.message)
           reject();
         });
@@ -44,10 +42,9 @@ export class AuthService {
   public signUp(user) {
     let url: string = `${this.API_URL}/users`;
     let promise = new Promise((resolve, reject) => {
-      this.http.post(url, user, { headers: this.headers }).toPromise()
-        .then((res) => {
-          let data = res.json()
-          let token = data.token
+      this.http.post(url, user).toPromise()
+        .then(res => {
+          let token = res["token"]
           this.saveToken(token);
           this.router.navigate(['']);
           resolve()
@@ -90,6 +87,7 @@ export class AuthService {
       return {
         _id: payload._id,
         email: payload.email,
+        profileImage: payload.profileImage,
         firstName: payload.firstName,
         lastName: payload.lastName,
         accountConfirmed: payload.accountConfirmed,
@@ -99,4 +97,22 @@ export class AuthService {
       return {};
     }
   };
+
+  public getNewToken () {
+    let promise = new Promise((resolve, reject) => {
+      this.http.post(`${this.API_URL}/users/newToken`, {}).toPromise()
+        .then(response => {
+          if (this.currentUser()["userType"] !== 'admin') {
+            let token = response["token"]
+            this.saveToken(token);
+            location.reload(true)
+            resolve();
+          }
+        }).catch(response => {
+          console.log("Error while requesting new token", response);
+          reject(response);
+        });
+    })
+    return promise
+  }
 }
