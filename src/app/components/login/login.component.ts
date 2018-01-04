@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
       .then(() => {
         location.reload()
       })
+      .catch(err => { 
+        console.log(err);
+      })
   }
 
 }

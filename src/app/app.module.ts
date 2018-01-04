@@ -10,8 +10,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FileUploadModule } from 'ng2-file-upload';
+// import { NgxEditorModule } from 'ngx-editor';
+import { CKEditorModule } from 'ng2-ckeditor';
+
 
 
 //components
@@ -28,11 +33,12 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { UsersComponent } from './components/admin/users/users.component';
 import { PostsComponent } from './components/admin/posts/posts.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PagesMainComponent } from './components/admin/pages/pages-main/pages-main.component';
 
 //services
 import { AuthService } from './services/auth/auth.service';
 import { PostService } from './services/post/post.service';
-import { ContactService } from './services/statics/contact/contact.service';
+import { PagesService } from './services/statics/pages.service';
 import { UserService } from './services/user/user.service';
 
 //Pipes
@@ -56,7 +62,8 @@ import { MyHttpLogInterceptor } from './classes/interceptor';
     UsersComponent,
     PostsComponent,
     SliceStringPipe,
-    FooterComponent
+    FooterComponent,
+    PagesMainComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -67,13 +74,17 @@ import { MyHttpLogInterceptor } from './classes/interceptor';
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     TabsModule.forRoot(),
+    AccordionModule.forRoot(),
+    ModalModule.forRoot(),
     AngularFontAwesomeModule,
-    FileUploadModule
+    FileUploadModule,
+    // NgxEditorModule
+    CKEditorModule
   ],
   providers: [
     AuthService,
     PostService,
-    ContactService,
+    PagesService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: MyHttpLogInterceptor, multi: true },
   ],

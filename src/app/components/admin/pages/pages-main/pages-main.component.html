@@ -1,0 +1,34 @@
+<div class="col-md-12">
+    <div class="col-md-12">
+        <accordion [closeOthers]="true">
+            <accordion-group *ngFor="let page of pages" heading="{{page.name}}" panelClass="panel-primary">
+                
+                <div *ngFor="let section; let i = index of page.content" class="section">
+                    <a (click)="openModal(template)">
+                        <div [innerHTML]="section" class="col-md-12 text-justify"></div>
+                    </a>
+                    <ng-template #template>
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">{{page.name}} Page, Section {{i+1}}</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ckeditor [(ngModel)]="page.content[i]"></ckeditor>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" (click)="updatePage(page)">
+                                Save
+                            </button>
+                            <button class="btn btn-danger" (click)="modalRef.hide()">
+                                Cancel
+                            </button>
+                        </div>
+                    </ng-template>
+                </div>
+            </accordion-group>
+        </accordion>
+    </div>
+
+</div>

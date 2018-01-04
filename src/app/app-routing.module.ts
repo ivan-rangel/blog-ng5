@@ -10,7 +10,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { PostsComponent } from './components/admin/posts/posts.component';
-
+import { PagesMainComponent } from './components/admin/pages/pages-main/pages-main.component';
 
 const routes: Routes = [
     {
@@ -25,7 +25,7 @@ const routes: Routes = [
     },
     {
         path: 'fb-login/:token',
-        component: LoginComponent,        
+        component: LoginComponent,
     },
     {
         path: 'signup',
@@ -39,28 +39,43 @@ const routes: Routes = [
     },
     {
         path: 'post/:postId',
-        component: PostComponent        
+        component: PostComponent
     },
     {
         path: 'contact',
-        component: ContactComponent        
+        component: ContactComponent
     },
     {
         path: 'profile',
-        component: ProfileComponent        
+        component: ProfileComponent
     },
     {
         path: 'admin',
-        component: DashboardComponent        
+        component: DashboardComponent,
+        children: [
+            { path: '', redirectTo: 'admin', pathMatch: 'full' },
+            {
+                path: 'users',
+                component: UsersComponent,
+            },
+            {
+                path: 'posts',
+                component: PostsComponent,
+            },
+            {
+                path: 'pages',
+                component: PagesMainComponent                
+            }
+        ]
     },
-    {
-        path: 'admin/users',
-        component: UsersComponent        
-    },
-    {
-        path: 'admin/posts',
-        component: PostsComponent        
-    },
+    // {
+    //     path: 'admin/users',
+    //     component: UsersComponent
+    // },
+    // {
+    //     path: 'admin/posts',
+    //     component: PostsComponent
+    // },
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactService } from '../../services/statics/contact/contact.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { PagesService } from '../../services/statics/pages.service';
 
 @Component({
   selector: 'app-contact',
@@ -15,10 +15,22 @@ export class ContactComponent implements OnInit {
     message: null,
   }
   currentUser
+  page = {
+    content: [],
+    name: String,
+  }
 
-  constructor(private contactS: ContactService, private authS: AuthService) { }
+  constructor(private pageS: PagesService, private authS: AuthService) { }
 
   ngOnInit() {
+    this.pageS.getPage('contact')
+      .then(res => {
+        this.page.content = res['content']
+        this.page.name = res['name']        
+      })
+      .catch(res => {
+        console.log(res);
+      })
     if (this.authS.isLoggedIn()) {
       this.currentUser = this.authS.currentUser();
       this.contact.firstName = this.currentUser.firstName
@@ -27,7 +39,7 @@ export class ContactComponent implements OnInit {
     }
   }
   public sendContact() {
-    this.contactS.sendContact(this.contact)
+    this.pageS.sendContact(this.contact)
       .then(() => {
         alert('Message sent to the admin')
         this.contact = {

@@ -1,10 +1,8 @@
-<div class="container">
-  <tabset [justified]='true' type='pills'>
-    <tab heading="Users" id="tab1">
-      <app-users></app-users>
+<div class="container margin-top-30">
+  <tabset [justified]='true' type='pills'>    
+    <tab *ngFor="let tabz of pills" [heading]="tabz.name" (select)="goTo(tabz.path)">
+      <h2 class="text-center">{{tabz.name}} Management</h2>
     </tab>
-    <tab heading="Posts" id='tab2'>    
-      <app-posts></app-posts>
-    </tab>    
   </tabset>
+  <router-outlet></router-outlet>  
 </div>
