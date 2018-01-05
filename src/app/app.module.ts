@@ -42,10 +42,12 @@ import { PagesService } from './services/statics/pages.service';
 import { UserService } from './services/user/user.service';
 
 //Pipes
-import { SliceStringPipe } from './pipes/slice-string.pipe';
+import { SliceStringPipe } from './pipes/slice-string/slice-string.pipe';
+import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
 
 //Http Interceptor
 import { MyHttpLogInterceptor } from './classes/interceptor';
+import { SanitizeHtmlPipe } from './pipes/sanitize-html/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { MyHttpLogInterceptor } from './classes/interceptor';
     SliceStringPipe,
     FooterComponent,
     PagesMainComponent,
+    CapitalizePipe,
+    SanitizeHtmlPipe
   ],
   imports: [
     AppRoutingModule,

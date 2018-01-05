@@ -11,7 +11,8 @@ import { PagesService } from '../../services/statics/pages.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  posts = null;
+  featuredPosts = [];
+  unfeaturedPosts = [];
   currentUser = null;
   page = {
     content: [],
@@ -36,7 +37,14 @@ export class HomeComponent implements OnInit {
     this.currentUser = this.authS.currentUser();
     this.postS.getPosts()
       .then(posts => {
-        this.posts = posts;
+        for (let index = 0; index < posts['length']; index++) {
+          const element = posts[index];
+          if (element['isFeatured']) {
+            this.featuredPosts.push(element)
+          } else {
+            this.unfeaturedPosts.push(element)
+          }
+        }
       })
       .catch(err => {
         console.log(err);

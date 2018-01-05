@@ -5,7 +5,7 @@
     <th>Email</th>
     <th>Member since</th>
     <th>Options</th>
-    <tr *ngFor="let user of users">
+    <tr *ngFor="let user of users; trackBy: _id">
       <td>{{user.firstName}}</td>
       <td>{{user.lastName}}</td>
       <td>{{user.email}}</td>

@@ -37,6 +37,7 @@ export class PagesMainComponent implements OnInit {
     this.pageS.updatePage(page)
       .then(res => {
         this.ngOnInit()
+        this.modalRef.hide();
       })
       .catch(res => {
         console.log(res);
