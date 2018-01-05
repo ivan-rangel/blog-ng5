@@ -13,7 +13,7 @@
             </h2>
             <h3>{{post?.body}}</h3>
             <h4>{{post?.createdAt | date: 'medium'}}
-                <span *ngIf="post.author"> by {{post?.author?.firstName}} {{post?.author?.lastName}}</span>
+                <span *ngIf="post?.author"> by {{post?.author?.firstName}} {{post?.author?.lastName}}</span>
             </h4>
         </div>
     </div>
