@@ -9,7 +9,10 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user = {}
+  user = {
+    email: String,
+    password: String
+  }
 
   constructor(private router: Router, private authS: AuthService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
@@ -31,7 +34,7 @@ export class LoginComponent implements OnInit {
       .then(() => {
         location.reload()
       })
-      .catch(err => { 
+      .catch(err => {
         console.log(err);
       })
   }

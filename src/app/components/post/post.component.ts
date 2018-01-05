@@ -10,8 +10,8 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  currentUser = {}
-  post = {}
+  currentUser
+  post
   constructor(private postS: PostService, private authS: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit() {

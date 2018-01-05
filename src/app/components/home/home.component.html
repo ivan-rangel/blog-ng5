@@ -32,7 +32,7 @@
     </div>
     <div class="row col-md-12">
         <h2>Featured Posts</h2>
-        <div *ngFor="let post of featuredPosts; let i = index; trackBy: _id">
+        <div *ngFor="let post of featuredPosts; let i = index">
             <div class="clearfix" *ngIf="i % 2 == 0"></div>
             <div class="col-md-6 well back-color" *ngIf="post.isVisible">
                 <h2>
@@ -56,7 +56,7 @@
     </div>
     <div class="row col-md-12">
         <h2>All Posts</h2>
-        <div *ngFor="let post of unfeaturedPosts; let i = index; trackBy: _id">
+        <div *ngFor="let post of unfeaturedPosts; let i = index">
             <div class="clearfix" *ngIf="i % 2 == 0"></div>
             <div class="col-md-6 well back-color" *ngIf="post.isVisible">
                 <h2>

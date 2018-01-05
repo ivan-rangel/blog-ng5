@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class AuthService {
 
-  private API_URL: string = 'http://local.blog.com:8080/api/v1';
+  private API_URL: string = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com/api/v1';
 
   constructor(private http: HttpClient, private router: Router) { }
 

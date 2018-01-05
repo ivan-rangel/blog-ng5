@@ -4,7 +4,7 @@
     <th>Body</th>
     <th>Created at</th>
     <th>Options</th>
-    <tr *ngFor="let post of posts; trackBy: _id">
+    <tr *ngFor="let post of posts">
       <td>{{post.title}}</td>
       <td [tooltip]='post.body'>{{post.body | sliceString}}</td>
       <td>{{post.createdAt | date:'medium'}}</td>

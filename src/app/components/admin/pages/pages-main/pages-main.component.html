@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="col-md-12">
         <accordion [closeOthers]="true">
-            <accordion-group *ngFor="let page of pages; trackBy: _id" heading="{{page.name | capitalize}} Page" panelClass="panel-primary">
+            <accordion-group *ngFor="let page of pages" heading="{{page.name | capitalize}} Page" panelClass="panel-primary">
                 <div *ngFor="let section of page.content; let i = index" class="section">
                     <a (click)="openModal(template)">
                         <div [innerHTML]="section | sanitizeHtml" class="col-md-12 text-justify"></div>

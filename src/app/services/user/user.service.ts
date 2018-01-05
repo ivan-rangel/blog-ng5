@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
-  apiURL = 'http://local.blog.com:8080/api/v1/users';
+  apiURL = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com/api/v1/users';
 
   constructor(private http: HttpClient) { }
 

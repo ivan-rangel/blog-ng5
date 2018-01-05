@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class PagesService {
 
-  apiURL = 'http://local.blog.com:8080/api/v1/pages';
+  apiURL = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com/api/v1/pages';
 
   constructor(private http: HttpClient) { }
 
@@ -50,7 +50,7 @@ export class PagesService {
   }
 
   public sendContact(contact) {
-    let apiURL = 'http://local.blog.com:8080/api/v1/contact';
+    let apiURL = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com/api/v1/contact';
     let promise = new Promise((resolve, reject) => {
       this.http.post(apiURL, contact).toPromise()
         .then(res => {

@@ -5,7 +5,7 @@ import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 
-const URL = 'http://local.blog.com:8080/api/v1/users/profile-img';
+const URL = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com/api/v1/users/profile-img';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
   posts
   editableUser
-  profileURL = 'http://local.blog.com:8080/profile_imgs/'
+  profileURL = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com/profile_imgs/'
 
 
   constructor(
@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
         console.log(res);
       })
   }
-  private updateUserInfo(user) {
+  public updateUserInfo(user) {
     this.userS.update(user)
       .then(res => {
         this.authS.getNewToken()
