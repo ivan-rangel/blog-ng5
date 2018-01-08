@@ -2,7 +2,7 @@
   <h1>Sign Up</h1>
   <div class="row">
     <div class="col-md-6">
-      <form (ngSubmit)="signUp()" #userForm="ngForm">
+      <form #userForm="ngForm">
         <div class="form-group">
           <label for="name">First Name</label>
           <input type="text" class="form-control" [(ngModel)]="user.firstName" name="fisrtName" required>
@@ -25,7 +25,7 @@
         </div>        
         
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Sign Up</button>
+          <button type="button" class="btn btn-primary" [disabled]="!userForm.form.valid" (click)="signUp()">Sign Up</button>
         </div>        
       </form>
       <div>

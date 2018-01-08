@@ -54,7 +54,7 @@ export class PagesService {
     let promise = new Promise((resolve, reject) => {
       this.http.post(apiURL, contact).toPromise()
         .then(res => {
-          resolve()
+          resolve(res)
         })
         .catch(res => {
           reject(res)

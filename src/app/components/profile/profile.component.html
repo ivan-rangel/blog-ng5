@@ -37,7 +37,7 @@
     </tab>
     <tab heading="My Info" id='tab2'>
       <div class="col-md-12 text-center  margin-top-30">
-        <form (ngSubmit)="updateUserInfo(editableUser)" #userForm="ngForm">
+        <form #userForm="ngForm">
           <div class="form-group">
             <label for="name">First Name</label>
             <input type="text" class="form-control" [(ngModel)]="editableUser.firstName" name="fisrtName" required>
@@ -52,7 +52,7 @@
           </div>
 
           <div class="form-group">
-            <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.dirty">Update Info</button>
+            <button type="button" class="btn btn-primary" [disabled]="!userForm.form.dirty" (click)="updateUserInfo(editableUser)">Update Info</button>
           </div>
         </form>
       </div>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6">
       <h1>Contact Us</h1>
-      <form (ngSubmit)="sendContact()" #contactForm="ngForm">
+      <form #contactForm="ngForm">
         <div class="form-group">
           <label for="name">First Name</label>
           <input type="text" class="form-control" [(ngModel)]="contact.firstName" name="firstName" required>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" [disabled]="!contactForm.form.valid">Send</button>
+          <button type="button" class="btn btn-primary" [disabled]="!contactForm.form.valid" (click)="sendContact()">Send</button>
         </div>
       </form>
     </div>
