@@ -5,7 +5,7 @@ import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 
-const URL = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com:8080/api/v1/users/profile-img';
+const URL = '/api/v1/users/profile-img';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   currentUser: any;
   posts
   editableUser
-  profileURL = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com/profile_imgs/'
+  profileURL = './profile_imgs/'
 
 
   constructor(

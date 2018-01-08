@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PostService {
-  apiURL = 'http://ec2-52-52-125-241.us-west-1.compute.amazonaws.com:8080/api/v1/posts';
+  apiURL = '/api/v1/posts';
 
   constructor(private http: HttpClient) { }
 

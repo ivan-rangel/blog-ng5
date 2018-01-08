@@ -40,3 +40,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#. env file
+.env
+
+# profile images
+profile_imgs/
