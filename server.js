@@ -58,3 +58,5 @@ dbConnection
     .catch((err) => {
         console.log(err);
     })
+
+exports = module.exports = app; // expose app
